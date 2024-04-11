@@ -7,6 +7,10 @@ COPY requirements.txt requirements.txt
 ENV DEPS="build-essential cmake"
 
 RUN apt-get update \
+    && apt-get install -y git \
+    && apt-get clean
+
+RUN apt-get update \
   && apt-get install -y ${DEPS} --no-install-recommends \
   && pip install -r requirements.txt \
   && rm -rf /var/lib/apt/lists/* \

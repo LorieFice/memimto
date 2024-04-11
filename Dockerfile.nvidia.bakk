@@ -1,3 +1,4 @@
+
 # This is a sample Dockerfile you can modify to deploy your own app based on face_recognition on the GPU
 # In order to run Docker in the GPU you will need to install Nvidia-Docker: https://github.com/NVIDIA/nvidia-docker
 

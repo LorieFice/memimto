@@ -15,7 +15,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.preprocessing import LabelEncoder
-from tqdm import tqdm
 
 def unzip(file_name, album_name):
     #Unzip the file
@@ -46,7 +45,8 @@ def extract_face(image_list, album, db_session):
     data_dir = Path(current_app.config["data_dir"])
     faces = []
 
-    for image_name in tqdm(image_list, desc="Extracting Faces", unit="image"):
+    for (i, image_name) in enumerate(image_list):
+        print(f"Extracting faces from Image: {str(image_name)} ({i + 1}/{len(image_list)})")
         image_path = data_dir / image_name
         try:
             # Get the embeddings for all faces in the image

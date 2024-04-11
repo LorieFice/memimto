@@ -10,7 +10,7 @@ class User(db.Model):
 
     def __init__(self, name, password):
         self.name = name
-        self.password = generate_password_hash(password, method='sha256')
+        self.password = generate_password_hash(password, method='pbkdf2:sha256')
 
     @classmethod
     def authenticate(self, **kwargs):

@@ -1,4 +1,4 @@
-from celery import Celery
+from celery import Celery, Task
 import flask
 from os import environ
 

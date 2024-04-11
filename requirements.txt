@@ -1,4 +1,5 @@
 Flask
+typing-extensions
 flask-cors
 Flask-SQLAlchemy
 celery
@@ -9,3 +10,8 @@ python-dotenv
 gunicorn
 pymysql
 PyJWT
+matplotlib
+opencv-python
+tqdm
+tensorflow==2.12
+deepface

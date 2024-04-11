@@ -20,7 +20,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.nvidia
     volumes: 
       - data:/data
     depends_on:
@@ -34,11 +34,18 @@ services:
       - DATA_DIR=/data
       - ADMIN_PASSWORD=whatapassword
       - SECRET_KEY=OUILOUILOUIL
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     
   worker:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.nvidia
     volumes: 
       - data:/data
     depends_on:
@@ -51,7 +58,14 @@ services:
       - ADMIN_PASSWORD=whatapassword
       - SECRET_KEY=OUILOUILOUIL
     command: celery -A memimto.__main__.celery worker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
 volumes:
   data: 
-  db_data: 
+  db_data:  
